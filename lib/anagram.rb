@@ -8,20 +8,11 @@ class Anagram
 
   def match(anagrams)
     ans = []
-    tempWord = @word
 
     anagrams.each do |ana|
-      if(ana.length == tempWord.length)
-        count = 0
-        ana.split('').each do |char|
-          if(!tempWord.include?(char))
-            break
-          end
-          count += 1
-        end
-        if count == ana.length
-          ans << ana
-        end
+      tempWord = @word.dup
+      if ana.split('').sort == tempWord.split('').sort
+        ans << ana
       end
     end
 
